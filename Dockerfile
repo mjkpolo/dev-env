@@ -34,6 +34,7 @@ ENV NVM_DIR /home/$DOCKER_USER/.nvm
 RUN . "$NVM_DIR/nvm.sh" && \
 	nvm install --lts && \
 	nvm alias default stable
+
 # Please change to your github otherwise I'd get too much credit ;)
 RUN git config --global user.email "mkurzynski@wisc.edu" && \
     git config --global user.name "Marco Kurzynski"
