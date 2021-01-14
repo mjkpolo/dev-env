@@ -2,6 +2,9 @@
 ---
 >Made this for my fellow mac fanboys (don't be proud it's embarassing)
 ---
+## Disclaimer
+This is using my dotfiles from my github, so things may change (prolly just colorscheme), and for best practice you should change this to suit yourself <br/>
+Yes, I know I could have a copy in this folder but that would be less interesting and I'm lazy
 ### Guide
 - run `git clone https://github.com/mjkpolo/dev-env`
 - run `cd dev-env`
