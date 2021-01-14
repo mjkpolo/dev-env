@@ -1,2 +1,0 @@
-docker build -t linux_env .
-docker run --rm -ti --volume ~/cs420:/home/dev/cs420 linux_env bash
