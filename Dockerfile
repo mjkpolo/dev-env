@@ -11,7 +11,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER "$DOCKER_USER"
 WORKDIR "/home/$DOCKER_USER"
 RUN touch ~/.sudo_as_admin_successful
-RUN sudo apt-get install -y build-essential curl git neovim bash-completion libgtest-dev exuberant-ctags ccls
+RUN sudo apt-get install -y build-essential curl git neovim libgtest-dev exuberant-ctags ccls
 
 # change if u don't live here ig lmao
 # timezone is required for cmake
