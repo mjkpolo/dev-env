@@ -1,5 +1,6 @@
 # dev-env
-Docker development environment 
+---
+>Made this for my fellow mac fanboys (don't be proud it's embarassing)
 ---
 ### Guide
 - run `git clone https://github.com/mjkpolo/dev-env`
