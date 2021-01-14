@@ -3,6 +3,6 @@ echo "Change github info otherwise it says I authored everything lmao"
 echo "Don't forget to gen_compile_commands in pod-embedded otherwise ccls has no local files"
 read -n 1 -s -r -p "Press any key to continue if you read above..."
 docker build -t linux_env .
-echo "Installing "ubuntu" to /usr/local/bin..."
+echo "Installing \"ubuntu\" to /usr/local/bin..."
 sudo cp run /usr/local/bin/ubuntu
 echo "Done! To use the ubuntu docker env just type ubuntu in terminal wherever you want to mount your folder!"
