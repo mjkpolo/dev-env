@@ -12,6 +12,7 @@ USER "$DOCKER_USER"
 WORKDIR "/home/$DOCKER_USER"
 RUN touch ~/.sudo_as_admin_successful
 RUN sudo apt-get install -y build-essential curl git neovim libgtest-dev exuberant-ctags ccls
+RUN sudo apt-get install -y python3 python3-pip python-is-python3
 
 # change if u don't live here ig lmao
 # timezone is required for cmake
