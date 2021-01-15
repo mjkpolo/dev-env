@@ -17,7 +17,7 @@ RUN sudo apt-get install -y python3 python3-pip python-is-python3
 # change if u don't live here ig lmao
 # timezone is required for cmake
 RUN sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
-RUN sudo apt-get install -y cmake
+RUN sudo apt-get install -y cmake clang-format
 
 # if other dotfiles change instances of dotfiles to your folder name
 # mine are pretty dece tho
