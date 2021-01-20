@@ -1,4 +1,4 @@
 #!/bin/bash
 echo "Don't forget to gen_compile_commands!!!"
 echo "mounting ${PWD} as ~/code..."
-docker run --rm -ti --volume ${PWD}:/home/bucky/code linux_env bash
+docker run --rm -ti --volume ${PWD}:/home/bucky/code linux_env zsh

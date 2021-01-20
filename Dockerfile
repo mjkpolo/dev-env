@@ -28,6 +28,9 @@ RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 RUN nvim +PlugInstall +qall
 
+RUN sudo apt-get install -y zsh
+RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # dependent on my dotfiles so copy my coc-settings.json if changed
 RUN ln -s ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
