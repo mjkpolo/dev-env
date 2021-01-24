@@ -12,8 +12,8 @@ USER "$DOCKER_USER"
 WORKDIR "/home/$DOCKER_USER"
 RUN touch ~/.sudo_as_admin_successful
 RUN sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
-RUN sudo apt-get install -y build-essential curl git neovim libgtest-dev exuberant-ctags ccls nodejs
-RUN sudo apt-get install -y python3 python3-pip python-is-python3
+RUN sudo apt-get install -y build-essential curl git neovim libgtest-dev exuberant-ctags ccls nodejs wget
+RUN sudo apt-get install -y python3 python3-pip python-is-python3 golang npm openjdk-11-jdk
 
 # change if u don't live here ig lmao
 # timezone is required for cmake
@@ -22,17 +22,17 @@ RUN sudo apt-get install -y cmake clang-format
 RUN sudo apt-get install -y zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# if other dotfiles change instances of dotfiles to your folder name
-# mine are pretty dece tho
-RUN git clone https://github.com/mjkpolo/dotfiles
 RUN mkdir -p "$HOME/.config/nvim"
-RUN ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
+COPY ./init.vim /tmp/init.vim
+RUN cat /tmp/init.vim > ~/.config/nvim/init.vim && \
+    sudo rm /tmp/init.vim
+RUN cat ~/.config/nvim/init.vim
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 RUN nvim +PlugInstall +qall
 
-# dependent on my dotfiles so copy my coc-settings.json if changed
-RUN ln -s ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
+RUN cd ~/.vim/plugged/YouCompleteMe && \
+    python3 install.py --all
 
 # Please change to your github otherwise I'd get too much credit ;)
 RUN git config --global user.email "mkurzynski@wisc.edu" && \
