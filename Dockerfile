@@ -13,7 +13,7 @@ WORKDIR "/home/$DOCKER_USER"
 RUN touch ~/.sudo_as_admin_successful
 RUN sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
 RUN sudo apt-get install -y build-essential curl git neovim exuberant-ctags nodejs wget
-RUN sudo apt-get install -y python3 python3-pip python-is-python3 golang npm openjdk-11-jdk
+RUN sudo apt-get install -y python3 python3-pip python-is-python3 golang npm openjdk-11-jdk flake8
 
 RUN sudo apt-get install -y zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
