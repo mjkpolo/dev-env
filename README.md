@@ -1,4 +1,4 @@
-# dev-env
+# Badgerloop dev-env
 ---
 >Made this for my fellow mac fanboys (don't be proud it's embarassing)
 ---
