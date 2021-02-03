@@ -12,10 +12,9 @@ USER "$DOCKER_USER"
 WORKDIR "/home/$DOCKER_USER"
 RUN touch ~/.sudo_as_admin_successful
 RUN sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
-RUN sudo apt-get install -y build-essential curl git neovim exuberant-ctags nodejs wget
-RUN sudo apt-get install -y python3 python3-pip python-is-python3 golang npm openjdk-11-jdk flake8
+RUN sudo apt-get install -y build-essential curl git wget neovim zsh
+RUN sudo apt-get install -y nodejs npm openjdk-11-jdk exuberant-ctags
 
-RUN sudo apt-get install -y zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 RUN mkdir -p "$HOME/.config/nvim"
@@ -26,9 +25,6 @@ RUN cat ~/.config/nvim/init.vim
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 RUN nvim +PlugInstall +qall
-
-RUN cd ~/.vim/plugged/YouCompleteMe && \
-    python3 install.py --all
 
 # Please change to your github otherwise I'd get too much credit ;)
 RUN git config --global user.email "mkurzynski@wisc.edu" && \
