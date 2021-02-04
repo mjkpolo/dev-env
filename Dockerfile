@@ -13,7 +13,7 @@ WORKDIR "/home/$DOCKER_USER"
 RUN touch ~/.sudo_as_admin_successful
 RUN sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
 RUN sudo apt-get install -y build-essential curl git wget neovim zsh
-RUN sudo apt-get install -y nodejs npm openjdk-11-jdk exuberant-ctags
+RUN sudo apt-get install -y nodejs npm openjdk-11-jdk exuberant-ctags rsync
 
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
