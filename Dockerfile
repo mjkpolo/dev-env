@@ -21,7 +21,6 @@ RUN mkdir -p "$HOME/.config/nvim"
 COPY ./init.vim /tmp/init.vim
 RUN cat /tmp/init.vim > ~/.config/nvim/init.vim && \
     sudo rm /tmp/init.vim
-RUN cat ~/.config/nvim/init.vim
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 RUN nvim +PlugInstall +qall
