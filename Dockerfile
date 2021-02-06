@@ -24,15 +24,17 @@ RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/inst
 
 # if other dotfiles change instances of dotfiles to your folder name
 # mine are pretty dece tho
-RUN git clone https://github.com/mjkpolo/dotfiles
 RUN mkdir -p "$HOME/.config/nvim"
-RUN ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
+COPY ./init.vim /tmp/init.vim
+RUN cat /tmp/init.vim > ~/.config/nvim/init.vim && \
+    sudo rm /tmp/init.vim
+COPY ./coc-settings.json /tmp/coc-settings.json
+RUN cat /tmp/coc-settings.json > ~/.config/nvim/coc-settings.json && \
+    sudo rm /tmp/coc-settings.json
+
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 RUN nvim +PlugInstall +qall
-
-# dependent on my dotfiles so copy my coc-settings.json if changed
-RUN ln -s ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # Please change to your github otherwise I'd get too much credit ;)
 RUN git config --global user.email "mkurzynski@wisc.edu" && \
