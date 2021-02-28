@@ -11,14 +11,13 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER "$DOCKER_USER"
 WORKDIR "/home/$DOCKER_USER"
 RUN touch ~/.sudo_as_admin_successful
-
-# change if u don't live here ig lmao
-# timezone is required for cmake
 RUN sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
 RUN sudo apt-get install -y build-essential curl git neovim libgtest-dev exuberant-ctags ccls nodejs
 RUN sudo apt-get install -y python3 python3-pip python-is-python3
 
-RUN sudo apt-get install -y cmake clang-format wget
+# change if u don't live here ig lmao
+# timezone is required for cmake
+RUN sudo apt-get install -y cmake clang-format
 
 RUN sudo apt-get install -y zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
