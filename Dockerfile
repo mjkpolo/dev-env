@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu
 
 RUN apt-get update
 RUN apt-get install -y sudo
@@ -12,24 +12,11 @@ USER "$DOCKER_USER"
 WORKDIR "/home/$DOCKER_USER"
 RUN touch ~/.sudo_as_admin_successful
 RUN sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
-RUN sudo apt-get install -y build-essential curl git
-RUN sudo apt-get install -y python3 python3-pip
-
-# change if u don't live here ig lmao
-# timezone is required for cmake
-RUN sudo apt-get install -y cmake clang-format
-
-RUN sudo apt-get install -y zsh
-RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-RUN git clone https://github.com/google/googletest.git -b release-1.10.0 && \
-    cd googletest && \
-    mkdir build && \      
-    cd build && \
-    cmake .. && \
-    make && \
-    sudo make install
-
-# Please change to your github otherwise I'd get too much credit ;)
-RUN git config --global user.email "mkurzynski@wisc.edu" && \
-    git config --global user.name "Marco Kurzynski"
+RUN sudo apt-get install -y build-essential curl git zsh wget
+RUN sudo apt-get install -y python3 python3-pip python-is-python3
+RUN sudo apt-get install -y cmake clang-format 
+RUN sudo apt-get install -y libgtest-dev gcovr
+RUN wget -c https://releases.linaro.org/components/toolchain/binaries/6.5-2018.12/arm-linux-gnueabihf/gcc-linaro-6.5.0-2018.12-x86_64_arm-linux-gnueabihf.tar.xz
+RUN sudo tar xf gcc-linaro-6.5.0-2018.12-x86_64_arm-linux-gnueabihf.tar.xz -C /opt/
+RUN rm gcc-linaro-6.5.0-2018.12-x86_64_arm-linux-gnueabihf.tar.xz
+CMD cd ~/code && ./deploy.sh clean && ./deploy.sh build
