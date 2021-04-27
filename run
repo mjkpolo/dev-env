@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run --rm -ti --volume ${PWD}:/home/bucky/code linux_env
+docker run --rm -ti --volume ${PWD}:/home/bucky/code beaglebone

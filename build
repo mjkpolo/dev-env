@@ -1,4 +1,4 @@
 #!/bin/bash
-docker build -t linux_env .
+docker build -t beaglebone .
 echo "pwd to copy to bin:"
-sudo cp run /usr/local/bin/ubuntu
+sudo cp run /usr/local/bin/beaglebone 

@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM balenalib/beaglebone-black-debian:latest
 
 RUN apt-get update
 RUN apt-get install -y sudo
@@ -11,9 +11,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER "$DOCKER_USER"
 WORKDIR "/home/$DOCKER_USER"
 RUN touch ~/.sudo_as_admin_successful
-RUN sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
 RUN sudo apt-get install -y build-essential curl git zsh wget
-RUN sudo apt-get install -y python3 python3-pip python-is-python3
 RUN sudo apt-get install -y cmake clang-format 
 RUN sudo apt-get install -y libgtest-dev gcovr
 RUN wget -c https://releases.linaro.org/components/toolchain/binaries/6.5-2018.12/arm-linux-gnueabihf/gcc-linaro-6.5.0-2018.12-x86_64_arm-linux-gnueabihf.tar.xz
