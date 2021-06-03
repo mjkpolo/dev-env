@@ -15,8 +15,6 @@ RUN sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
 RUN sudo apt-get install -y build-essential curl git zsh wget
 RUN sudo apt-get install -y python3 python3-pip python-is-python3
 RUN sudo apt-get install -y cmake clang-format 
-RUN sudo apt-get install -y libgtest-dev gcovr
-RUN wget -c https://releases.linaro.org/components/toolchain/binaries/6.5-2018.12/arm-linux-gnueabihf/gcc-linaro-6.5.0-2018.12-x86_64_arm-linux-gnueabihf.tar.xz
-RUN sudo tar xf gcc-linaro-6.5.0-2018.12-x86_64_arm-linux-gnueabihf.tar.xz -C /opt/
-RUN rm gcc-linaro-6.5.0-2018.12-x86_64_arm-linux-gnueabihf.tar.xz
+RUN git clone https://github.com/badgerloop-software/pod-embedded
+RUN ~/pod-embedded/deploy.sh cross-setup && ~/pod-embedded/deploy.sh gtest-setup
 CMD cd ~/code && ./deploy.sh clean && ./deploy.sh build
