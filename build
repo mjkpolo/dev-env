@@ -1,4 +1,4 @@
 #!/bin/bash
-docker build -t linux_env .
+podman build -t linux_env .
 echo "pwd to copy to bin:"
 sudo cp run /usr/local/bin/ubuntu

@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run --rm -ti --volume ${PWD}:/home/bucky/code linux_env
+podman run --rm -ti --volume ${PWD}:/home/bucky linux_env
