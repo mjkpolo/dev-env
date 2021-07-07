@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
-
-docker buildx build --platform linux/amd64 -t linux_env .
-if [ -e /usr/local/bin/ubuntu ]; then
-    sudo rm -rf /usr/local/bin/ubuntu
+if [ "$1" == "x86" ]; then
+    echo "Building for x86"
+    docker buildx build --platform linux/amd64 -t linux_env .
+else
+    echo "Building for native architecture"
+    docker build -t linux_env .
 fi
+test -e /usr/local/bin/ubuntu && sudo rm -rf /usr/local/bin/ubuntu
 sudo ln -s $PWD/run /usr/local/bin/ubuntu 
-
