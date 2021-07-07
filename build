@@ -1,4 +1,9 @@
 #!/bin/bash
-podman build -t linux_env .
-echo "pwd to copy to bin:"
-sudo cp run /usr/local/bin/ubuntu
+set -e
+
+docker buildx build --platform linux/amd64 -t linux_env .
+if [ -e /usr/local/bin/ubuntu ]; then
+    sudo rm -rf /usr/local/bin/ubuntu
+fi
+sudo ln -s $PWD/run /usr/local/bin/ubuntu 
+
